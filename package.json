@@ -3,7 +3,7 @@
   "version": "0.0.3",
   "description": "React Component Library",
   "scripts": {
-    "rollup": "rollup -c --bundleConfigAsCjs"
+    "build": "rollup -c --bundleConfigAsCjs"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/Masaki-Yamanaka"
