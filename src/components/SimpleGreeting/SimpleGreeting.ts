@@ -1,19 +1,19 @@
-import { LitElement, html, unsafeCSS,css } from 'lit';
-import { customElement, property } from 'lit/decorators.js';
+import { LitElement, html, unsafeCSS, css } from 'lit';
+import { customElement } from 'lit/decorators.js';
 import styles from './SimpleGreeting.css';
-console.log(styles)
+
 @customElement('simple-greeting')
 export class SimpleGreeting extends LitElement {
 
   static styles =[unsafeCSS(styles)]
 
-  //   static styles = css`
+  // static styles = css`
   //   .test {
-  //     color: blue;
+  //     color: red;
   //   }
   // `;
   // @property()
-  // name?: string = 'World';
+  name?: string = '';
 
   override render() {
     return html`<p class="test">Hello!</p>`;

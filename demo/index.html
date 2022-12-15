@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <style>
       body {
-        background: #fafafa;
+        background-color: white;
       }
     </style>
   </head>
@@ -15,8 +15,15 @@
       import { html, render } from "lit";
       import "../dist/index.js";
 
+      const handleClick = (e) => console.log(e);
+
       render(
-        html` <simple-greeting></simple-greeting> `,
+        html`
+          <button-component
+            label="ボタン"
+            onclick="console.log(this)"
+          ></button-component>
+        `,
         document.querySelector("#demo")
       );
     </script>
