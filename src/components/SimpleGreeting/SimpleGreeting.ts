@@ -1,12 +1,11 @@
 import { LitElement, html, unsafeCSS,css } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import styles from './SimpleGreeting.scss';
+import styles from './SimpleGreeting.css';
 console.log(styles)
 @customElement('simple-greeting')
 export class SimpleGreeting extends LitElement {
-  
+
   static styles =[unsafeCSS(styles)]
-    
 
   //   static styles = css`
   //   .test {

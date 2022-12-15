@@ -4,8 +4,10 @@
   "description": "React Component Library",
   "scripts": {
     "build": "rollup -c --bundleConfigAsCjs",
+    "watch": "rollup -c --bundleConfigAsCjs -w",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "start": "yarn run build && concurrently -k -r \"yarn run watch\" \"wds\""
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/Masaki-Yamanaka"
@@ -25,6 +27,7 @@
     "@storybook/manager-webpack5": "^6.5.14",
     "@storybook/preset-scss": "^1.0.3",
     "@storybook/web-components": "^6.5.14",
+    "@web/dev-server": "^0.1.35",
     "babel-loader": "^8.3.0",
     "css-loader": "^6.7.3",
     "lit-html": "^2.5.0",
