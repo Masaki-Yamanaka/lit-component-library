@@ -1,33 +1,34 @@
-const path = require("path");
 
+const Sass = require('sass');
 module.exports = {
-  stories: ["../src/**/*.stories.mdx", "../src/**/*.stories.@(js|jsx|ts|tsx)"],
+  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
-    "@storybook/addon-links",
-    "@storybook/addon-essentials",
-    "@storybook/preset-scss",
+    '@storybook/addon-links',
+    '@storybook/addon-essentials',
   ],
-  framework: "@storybook/web-components",
+  framework: '@storybook/web-components',
   core: {
-    builder: "@storybook/builder-webpack5",
+    builder: '@storybook/builder-webpack5',
   },
+
   webpackFinal: async (config) => {
     config.module.rules.push({
       test: /\.scss$/,
-      use: [
-        "style-loader",
-        {
-          loader: "css-loader",
-          options: {
-            modules: {
-              auto: true,
-            },
-          },
-        },
-        "sass-loader",
-      ],
-      include: path.resolve(__dirname, "../"),
+      loader: 'lit-css-loader',
+      options: {
+        transform: (data, { filePath }) =>
+          Sass.renderSync({ data, file: filePath })
+            .css.toString(),
+      }
     });
+
     return config;
   },
+  babel: async (options) => {
+    Object.assign(options.plugins.find((plugin) => plugin[0].includes('plugin-proposal-decorators'))[1], {
+      decoratorsBeforeExport: true,
+      legacy: false
+    })
+    return options;
+  }
 };
