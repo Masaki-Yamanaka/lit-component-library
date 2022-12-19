@@ -1,0 +1,12 @@
+@use "../../reset.scss" as *;
+
+.button-component {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  > .label {
+    font-weight: 700;
+  }
+}
